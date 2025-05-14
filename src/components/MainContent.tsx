@@ -16,7 +16,7 @@ const MainContent: React.FC<MainContentProps> = ({ mode }) => {
   const taxonomy = mode === 'place' ? placeTaxonomy : activityTaxonomy;
   
   return (
-    <main className="overflow-y-auto p-6 bg-slate-50">
+    <main className="overflow-y-auto p-6 bg-secondary-50">
       <div className="max-w-7xl mx-auto">
         {viewMode === 'grid' && (
           <ResultsGrid 
@@ -26,7 +26,7 @@ const MainContent: React.FC<MainContentProps> = ({ mode }) => {
         )}
         
         {viewMode === 'taxonomy' && (
-          <div className="bg-white rounded-lg shadow-sm p-4 border border-slate-200">
+          <div className="bg-white rounded-lg shadow-sm p-4 border border-secondary-200">
             <TaxonomyVisualizer 
               taxonomy={taxonomy} 
               selectedItem={selectedTaxonomy} 
@@ -35,7 +35,7 @@ const MainContent: React.FC<MainContentProps> = ({ mode }) => {
         )}
         
         {viewMode === 'map' && mode === 'place' && (
-          <div className="bg-white rounded-lg shadow-sm p-4 border border-slate-200 h-[600px] flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-sm p-4 border border-secondary-200 h-[600px] flex items-center justify-center">
             <div className="text-center">
               <p className="text-slate-500 mb-2">Map View will be implemented here</p>
               <p className="text-sm text-slate-400">Showing places based on current filters and taxonomy selection</p>

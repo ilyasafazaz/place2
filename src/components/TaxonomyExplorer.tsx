@@ -32,8 +32,8 @@ const TaxonomyExplorer: React.FC<TaxonomyExplorerProps> = ({
         <div 
           className={`flex items-center py-1.5 px-2 rounded-md cursor-pointer transition-colors ${
             isSelected 
-              ? 'bg-blue-100 text-blue-800' 
-              : 'hover:bg-slate-100'
+              ? 'bg-primary-100 text-primary-800' 
+              : 'hover:bg-secondary-100'
           }`}
           style={{ paddingLeft: `${(depth * 0.75) + 0.5}rem` }}
         >

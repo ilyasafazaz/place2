@@ -24,14 +24,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, mode }) => {
   if (!open) return null;
   
   return (
-    <aside className="w-72 bg-white border-r border-slate-200 flex-shrink-0 overflow-y-auto transition-all duration-300 ease-in-out h-[calc(100vh-10rem)]">
+    <aside className="w-72 bg-white border-r border-secondary-200 flex-shrink-0 overflow-y-auto transition-all duration-300 ease-in-out h-[calc(100vh-10rem)]">
       <div className="p-4">
         <div className="relative mb-4">
           <Search size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder={`Search ${mode === 'place' ? 'places' : 'activities'}...`}
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, mode }) => {
           <h2 className="text-lg font-semibold text-slate-800">
             {mode === 'place' ? 'Places Filters' : 'Activities Filters'}
           </h2>
-          <button className="text-sm text-blue-600 hover:text-blue-700 flex items-center">
+          <button className="text-sm text-primary-600 hover:text-primary-700 flex items-center">
             <Filter size={16} className="mr-1" />
             Reset
           </button>
@@ -74,9 +74,9 @@ const FilterGroupComponent: React.FC<FilterGroupComponentProps> = ({
   toggleExpand 
 }) => {
   return (
-    <div className="border border-slate-200 rounded-md overflow-hidden">
+    <div className="border border-secondary-200 rounded-md overflow-hidden">
       <button
-        className="w-full flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+        className="w-full flex items-center justify-between p-3 bg-secondary-50 hover:bg-secondary-100 transition-colors text-left"
         onClick={toggleExpand}
       >
         <span className="font-medium text-slate-700">{group.label}</span>
@@ -89,7 +89,7 @@ const FilterGroupComponent: React.FC<FilterGroupComponentProps> = ({
             <div key={option.id} className="flex items-start">
               {option.type === 'checkbox' && (
                 <label className="flex items-center cursor-pointer">
-                  <input type="checkbox" className="mr-2 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
+                  <input type="checkbox" className="mr-2 h-4 w-4 rounded border-secondary-300 text-primary-600 focus:ring-primary-500" />
                   <span className="text-sm text-slate-700">{option.label}</span>
                 </label>
               )}
@@ -97,7 +97,7 @@ const FilterGroupComponent: React.FC<FilterGroupComponentProps> = ({
               {option.type === 'select' && option.options && (
                 <div className="w-full">
                   <label className="block text-sm text-slate-700 mb-1">{option.label}</label>
-                  <select className="w-full rounded-md border border-slate-300 py-1 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <select className="w-full rounded-md border border-secondary-300 py-1 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
                     <option value="">All</option>
                     {option.options.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -114,7 +114,7 @@ const FilterGroupComponent: React.FC<FilterGroupComponentProps> = ({
                       type="range" 
                       min={option.min} 
                       max={option.max} 
-                      className="w-full" 
+                      className="w-full accent-primary-500" 
                     />
                     <span className="text-xs text-slate-500">100 km</span>
                   </div>

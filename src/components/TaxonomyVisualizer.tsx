@@ -19,14 +19,11 @@ const TaxonomyVisualizer: React.FC<TaxonomyVisualizerProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas dimensions
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
     
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Add simple visualization (in a real app, use D3.js or a similar library)
     drawTaxonomyVisualization(ctx, canvas.width, canvas.height, taxonomy, selectedItem);
     
   }, [taxonomy, selectedItem]);
@@ -38,54 +35,44 @@ const TaxonomyVisualizer: React.FC<TaxonomyVisualizerProps> = ({
     taxonomy: TaxonomyItem[],
     selectedItem: TaxonomyItem | null
   ) => {
-    // This is a simplified visualization
-    // In a real app, use a library like D3.js for interactive visualizations
-    
     const centerX = width / 2;
     const centerY = height / 2;
     const radius = Math.min(width, height) / 3;
     
-    // Draw center circle
     ctx.beginPath();
     ctx.arc(centerX, centerY, 50, 0, Math.PI * 2);
-    ctx.fillStyle = '#3B82F6';
+    ctx.fillStyle = '#FFC0CB';
     ctx.fill();
     
-    // Draw text in center
     ctx.fillStyle = 'white';
     ctx.font = '14px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('Taxonomy', centerX, centerY);
     
-    // Draw top-level items around the center
     const itemCount = taxonomy.length;
     for (let i = 0; i < itemCount; i++) {
       const angle = (i / itemCount) * Math.PI * 2 - Math.PI / 2;
       const x = centerX + Math.cos(angle) * radius;
       const y = centerY + Math.sin(angle) * radius;
       
-      // Draw connection line
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
       ctx.lineTo(x, y);
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeStyle = '#ffd9e1';
       ctx.lineWidth = 2;
       ctx.stroke();
       
-      // Draw node
       const isSelected = selectedItem?.id === taxonomy[i].id;
       ctx.beginPath();
       ctx.arc(x, y, 30, 0, Math.PI * 2);
-      ctx.fillStyle = isSelected ? '#2563EB' : '#93C5FD';
+      ctx.fillStyle = isSelected ? '#ff7c95' : '#ffc0cb';
       ctx.fill();
       
-      // Draw text
-      ctx.fillStyle = isSelected ? 'white' : '#1E3A8A';
+      ctx.fillStyle = isSelected ? 'white' : '#ff385f';
       ctx.font = '12px Arial';
       ctx.fillText(taxonomy[i].name, x, y);
       
-      // Draw children if this is the selected item
       if (isSelected && taxonomy[i].children) {
         const childCount = taxonomy[i].children.length;
         const childRadius = radius * 0.6;
@@ -95,21 +82,18 @@ const TaxonomyVisualizer: React.FC<TaxonomyVisualizerProps> = ({
           const childX = x + Math.cos(childAngle) * childRadius;
           const childY = y + Math.sin(childAngle) * childRadius;
           
-          // Draw connection to child
           ctx.beginPath();
           ctx.moveTo(x, y);
           ctx.lineTo(childX, childY);
-          ctx.strokeStyle = '#CBD5E1';
+          ctx.strokeStyle = '#ffd9e1';
           ctx.stroke();
           
-          // Draw child node
           ctx.beginPath();
           ctx.arc(childX, childY, 20, 0, Math.PI * 2);
-          ctx.fillStyle = '#BFDBFE';
+          ctx.fillStyle = '#ffe6eb';
           ctx.fill();
           
-          // Draw child text
-          ctx.fillStyle = '#1E3A8A';
+          ctx.fillStyle = '#ff385f';
           ctx.font = '10px Arial';
           ctx.fillText(taxonomy[i].children[j].name, childX, childY);
         }
@@ -123,7 +107,7 @@ const TaxonomyVisualizer: React.FC<TaxonomyVisualizerProps> = ({
       <p className="text-sm text-slate-600 mb-4">
         Interactive visualization of the taxonomy hierarchy. Select an item to explore its relationships.
       </p>
-      <div className="flex-1 bg-slate-50 rounded-lg border border-slate-200 overflow-hidden">
+      <div className="flex-1 bg-secondary-50 rounded-lg border border-secondary-200 overflow-hidden">
         <canvas 
           ref={canvasRef} 
           className="w-full h-full"
