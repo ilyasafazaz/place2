@@ -46,12 +46,12 @@ const Header: React.FC<HeaderProps> = ({ mode, setMode }) => {
   return (
     <div className="flex flex-col w-full">
       {/* Top Bar */}
-      <div className="bg-white border-b border-slate-200 py-4">
+      <div className="bg-white border-b border-secondary-200 py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex-1" />
           <div className="text-center">
             <div className="flex items-center justify-center">
-              <span className="text-2xl font-bold text-blue-600">Place</span>
+              <span className="text-2xl font-bold text-primary-600">Place</span>
               <span className="text-2xl font-bold text-slate-800">2</span>
             </div>
           </div>
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ mode, setMode }) => {
             <button className="px-4 py-2 text-slate-600 hover:text-slate-800 transition-colors">
               Login
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+            <button className="px-4 py-2 bg-primary-400 text-white rounded-md hover:bg-primary-500 transition-colors">
               Sign Up
             </button>
           </div>
@@ -115,14 +115,14 @@ const Header: React.FC<HeaderProps> = ({ mode, setMode }) => {
       </div>
 
       {/* Navigation Menu */}
-      <nav className="bg-white border-b border-slate-200 py-3">
+      <nav className="bg-white border-b border-secondary-200 py-3">
         <div className="container mx-auto px-4">
           <ul className="flex justify-center space-x-8">
             {['Health', 'Education', 'Entertainment', 'Sports', 'Culture', 'Business'].map((item) => (
               <li key={item}>
                 <a 
                   href="#" 
-                  className="text-slate-600 hover:text-blue-600 transition-colors font-medium"
+                  className="text-slate-600 hover:text-primary-600 transition-colors font-medium"
                 >
                   {item}
                 </a>
@@ -137,8 +137,8 @@ const Header: React.FC<HeaderProps> = ({ mode, setMode }) => {
         <button 
           className={`flex items-center px-6 py-3 rounded-md transition-colors ${
             mode === 'place' 
-              ? 'bg-blue-600 text-white' 
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-primary-400 text-white' 
+              : 'bg-secondary-100 text-slate-700 hover:bg-secondary-200'
           }`}
           onClick={() => setMode('place')}
         >
@@ -148,8 +148,8 @@ const Header: React.FC<HeaderProps> = ({ mode, setMode }) => {
         <button 
           className={`flex items-center px-6 py-3 rounded-md transition-colors ${
             mode === 'activity' 
-              ? 'bg-blue-600 text-white' 
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-primary-400 text-white' 
+              : 'bg-secondary-100 text-slate-700 hover:bg-secondary-200'
           }`}
           onClick={() => setMode('activity')}
         >

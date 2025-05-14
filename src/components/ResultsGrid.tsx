@@ -9,7 +9,6 @@ interface ResultsGridProps {
 }
 
 const ResultsGrid: React.FC<ResultsGridProps> = ({ mode, taxonomyFilter }) => {
-  // In a real app, we would filter based on the taxonomy selection
   const items = mode === 'place' ? samplePlaces : sampleActivities;
   
   return (
@@ -39,7 +38,7 @@ const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
   const imageUrl = place.media?.images[0] || 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg';
   
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-secondary-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
       <div className="h-48 overflow-hidden relative">
         <img 
           src={imageUrl} 
@@ -64,13 +63,13 @@ const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
           {place.categories.slice(0, 3).map((category, index) => (
             <span 
               key={index} 
-              className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800"
+              className="text-xs px-2 py-1 rounded-full bg-primary-100 text-primary-800"
             >
               {category}
             </span>
           ))}
           {place.categories.length > 3 && (
-            <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-800">
+            <span className="text-xs px-2 py-1 rounded-full bg-secondary-100 text-slate-800">
               +{place.categories.length - 3}
             </span>
           )}
@@ -92,10 +91,8 @@ interface ActivityCardProps {
 }
 
 const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
-  // Sample images for activities - in a real app would come from the data
   const imageUrl = 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg';
   
-  // Build classification path
   const classificationPath = [
     activity.classification.level1,
     activity.classification.level2,
@@ -104,7 +101,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
   ].filter(Boolean).join(' > ');
   
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-secondary-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
       <div className="h-48 overflow-hidden relative">
         <img 
           src={imageUrl} 
@@ -126,7 +123,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
           {activity.context.slice(0, 3).map((context, index) => (
             <span 
               key={index} 
-              className="text-xs px-2 py-1 rounded-full bg-teal-100 text-teal-800"
+              className="text-xs px-2 py-1 rounded-full bg-primary-100 text-primary-800"
             >
               {context}
             </span>
